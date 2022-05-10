@@ -1,0 +1,45 @@
+
+<div class="container mt-5 px-5">
+    
+    <div *ngIf="post?.title">
+        <h1> {{post?.title}} </h1>
+        <a [routerLink]="['/post','edit',post.id]">Edit</a>
+    </div>
+
+    <div class="mx-2">
+        <p>{{post?.body}}</p>
+    </div>
+
+    <div *ngIf="postLoading" class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+    <div>
+        <h3>comments</h3>
+
+        <div *ngIf="commentLoading" class="">
+            <div class="spinner-grow" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+
+        <div *ngFor="let comment of comments" class="p-2 border border-1 my-2">
+            <div class="">
+                <span>{{comment.name}}</span>, <span>{{comment.email}}</span>
+                
+            </div>
+            <div style="border-left: 2px solid gray;" class="">
+
+                <p class="mx-2">
+                    {{comment.body}} 
+
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,22 @@
+
+
+<div class="container mt-2">
+    <h1>{{pageHeader}}</h1>
+
+    <form class="from-group" [formGroup]="contactForm" (ngSubmit)="submit()" >
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" formControlName="title">
+          </div>
+          <div class="mb-3">
+            <label for="body" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="body" name="body" rows="3" formControlName="body"></textarea>
+          </div>
+
+          <div>
+              <input type="submit" class="btn btn-primary" value="{{submitBtnText}}">
+          </div>
+
+
+    </form>
+</div>

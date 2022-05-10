@@ -1,0 +1,27 @@
+
+
+
+<div class="container mt-5">
+
+    <h1>Post List</h1>
+
+    <div class="row ">
+        <div *ngIf="loading" class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div *ngFor="let post of posts"  class="col-sm-4 p-1 mycard">
+
+            <a [routerLink]="['post',post.id]" class="disableLink" >
+                
+                <article class="border border-1 w-100 h-100 p-3 artical" >
+                    <h5>
+                        {{post.title}}
+                    </h5>
+                </article>
+            </a>
+        </div>
+
+    </div>
+</div>
