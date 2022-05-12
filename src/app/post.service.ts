@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHandler, HttpHeaders } from '@angular/common/http';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, shareReplay } from 'rxjs';
 import { GlobalAlertService,AlertType } from './global-alert.service';
 import { Router } from '@angular/router';
 
@@ -27,7 +27,7 @@ export class PostService {
   constructor(private http:HttpClient,private alertService:GlobalAlertService,private router:Router) { }
 
   getPosts():Observable<Post[]>{
-    return this.http.get<Post[]>(this.baseUrl+"/posts")
+    return this.http.get<Post[]>(this.baseUrl+"/posts").pipe(shareReplay())
   }
 
   getPost(id:string):Observable<Post>{

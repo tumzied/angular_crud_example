@@ -2,15 +2,23 @@
 
 <div class="container mt-2">
     <h1>{{pageHeader}}</h1>
+   
 
     <form class="from-group" [formGroup]="contactForm" (ngSubmit)="submit()" >
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title" formControlName="title">
+            <input type="text" class="form-control" id="title" name="title"  formControlName="title" required>
+            
+            <div [hidden]="title?.valid || title?.pristine " class="alert alert-danger mt-2">
+              this filed is required
+            </div>
           </div>
           <div class="mb-3">
             <label for="body" class="form-label">Example textarea</label>
-            <textarea class="form-control" id="body" name="body" rows="3" formControlName="body"></textarea>
+            <textarea class="form-control" id="body" name="body" rows="3" formControlName="body" required></textarea>
+            <div [hidden]="body?.valid || body?.pristine " class="alert alert-danger mt-2 ">
+              this filed is required
+            </div>
           </div>
 
           <div>

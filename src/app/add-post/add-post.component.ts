@@ -15,7 +15,7 @@ export class AddPostComponent implements OnInit {
 
   contactForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    body: new FormControl(),
+    body: new FormControl('',[Validators.required]),
   });
 
   postId: string | null = null;
@@ -40,7 +40,18 @@ export class AddPostComponent implements OnInit {
     });
   }
 
+  get title(){
+    return this.contactForm.get('title')
+  }
+
+  get body(){
+    return this.contactForm.get('body')
+  }
+
   submit() {
+    if(this.contactForm.invalid)
+      return;
+
     if (!this.postId) {
       const body = JSON.stringify({ ...this.contactForm.value, userId: 1 });
       this.postService.addPost(body).subscribe({
